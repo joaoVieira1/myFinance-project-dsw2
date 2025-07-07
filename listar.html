@@ -36,6 +36,45 @@
 
     <h2 class="mb-4 text-center">Transações</h2>
 
+    <form id="formFiltros" class="row g-3 mb-4">
+      <div class="col-md-3">
+        <label for="filtroMes" class="form-label">Mês</label>
+        <select id="filtroMes" class="form-select" name="month">
+          <option value="">Todos</option>
+          <option value="01">Janeiro</option>
+          <option value="02">Fevereiro</option>
+          <option value="03">Março</option>
+          <option value="04">Abril</option>
+          <option value="05">Maio</option>
+          <option value="06">Junho</option>
+          <option value="07">Julho</option>
+          <option value="08">Agosto</option>
+          <option value="09">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
+      </div>
+    
+      <div class="col-md-3">
+        <label for="filtroTipo" class="form-label">Tipo</label>
+        <select id="filtroTipo" class="form-select" name="type">
+          <option value="">Todos</option>
+          <option value="RECEITA">Receita</option>
+          <option value="DESPESA">Despesa</option>
+        </select>
+      </div>
+    
+      <div class="col-md-3">
+        <label for="filtroCategoria" class="form-label">Categoria</label>
+        <input type="text" id="filtroCategoria" class="form-control" name="category" placeholder="Categoria"/>
+      </div>
+    
+      <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-secondary w-100">Filtrar</button>
+      </div>
+    </form>
+
     <table class="table table-bordered table-hover">
       <thead class="table-dark">
         <tr>

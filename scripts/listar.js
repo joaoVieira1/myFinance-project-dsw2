@@ -1,25 +1,37 @@
 let paginaAtual = 1;
+const formFiltros = document.getElementById("formFiltros");
 
 function carregarTransacoes(pagina = 1) {
-  fetch(`http://localhost:8080/api-transactions-dsw2/transactions?page=${pagina}&size=10`)
+  const month = document.getElementById("filtroMes").value;
+  const type = document.getElementById("filtroTipo").value;
+  const category = document.getElementById("filtroCategoria").value.trim();
+
+  let url = `http://localhost:8080/api-transactions-dsw2/transactions?page=${pagina}&size=10`;
+
+  if (month) url += `&month=${month}`;
+  if (type) url += `&type=${type}`;
+  if (category) url += `&category=${encodeURIComponent(category)}`;
+
+  fetch(url)
     .then(response => {
       if (!response.ok) throw new Error("Erro ao buscar transações");
       return response.json();
     })
     .then(data => {
+      // código para popular tabela permanece igual
       const tabela = document.getElementById("tabela-transacoes");
-      console.log("RESPOSTA DA API:", data);
       tabela.innerHTML = "";
 
       data.forEach(transacao => {
         const row = document.createElement("tr");
+        row.className = transacao.type === "RECEITA" ? "receita" : "despesa";
         row.innerHTML = `
           <td>${transacao.id}</td>
           <td>${transacao.description}</td>
           <td>${transacao.value.toFixed(2)}</td>
           <td class="text-center">
             <span class="badge ${transacao.type === 'RECEITA' ? 'bg-success' : 'bg-danger'}">
-                ${transacao.type}
+              ${transacao.type}
             </span>
           </td>
           <td>${transacao.category}</td>
@@ -68,6 +80,12 @@ document.getElementById("btnAnterior").addEventListener("click", () => {
     paginaAtual--;
     carregarTransacoes(paginaAtual);
   }
+});
+
+formFiltros.addEventListener("submit", e => {
+  e.preventDefault();
+  paginaAtual = 1; 
+  carregarTransacoes(paginaAtual);
 });
 
 carregarTransacoes(paginaAtual);
