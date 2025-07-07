@@ -39,8 +39,7 @@ function carregarTransacoes(pagina = 1) {
 }
 
 function atualizar(id) {
-  alert("Atualizar transação ID: " + id);
-  
+  window.open(`atualizar.html?id=${id}`, '_blank');
 }
 
 function deletar(id) {
@@ -51,7 +50,6 @@ function deletar(id) {
   })
     .then(res => {
       if (res.ok) {
-        alert("Transação deletada com sucesso!");
         carregarTransacoes(paginaAtual); 
       } else {
         throw new Error("Erro ao deletar transação");
