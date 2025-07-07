@@ -18,7 +18,6 @@ function carregarTransacoes(pagina = 1) {
       return response.json();
     })
     .then(data => {
-      // código para popular tabela permanece igual
       const tabela = document.getElementById("tabela-transacoes");
       tabela.innerHTML = "";
 
