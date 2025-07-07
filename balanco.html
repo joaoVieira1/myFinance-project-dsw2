@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel Financeiro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">My Finance</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarConteudo">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarConteudo">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="cadastrar.html">Cadastrar Transação</a></li>
+              <li class="nav-item"><a class="nav-link" href="listar.html">Transações</a></li>
+              <li class="nav-item"><a class="nav-link" href="balanco.html">Balanço Financeiro</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Balanço Financeiro</h2>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6">
+        <div class="card shadow-sm border-success text-center">
+          <div class="card-body">
+            <h5 class="card-title text-success">Saldo Atual</h5>
+            <h2 id="saldo" class="fw-bold">R$ 0,00</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <h5 class="text-center mb-3">Receitas por Categoria</h5>
+        <canvas id="graficoReceitas" style="max-width: 100%; height: 100px;"></canvas>
+      </div>
+      <div class="col-md-6">
+        <h5 class="text-center mb-3">Despesas por Categoria</h5>
+        <canvas id="graficoDespesas" style="max-width: 100%; height: 100px;"></canvas>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h5 class="text-center mb-3">Comparativo Receita x Despesa</h5>
+        <canvas id="graficoComparativo" style="max-width: 100%; height: 100px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="./scripts/balanco.js"></script>
+</body>
+</html>
